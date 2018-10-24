@@ -1,0 +1,133 @@
+﻿<configuration debug="true" scan="true" scanPeriod="30 minutes">
+
+	<!-- 读取属性配置文件，为下面占位符替换做准备（尤其是项目编号会作为文件路径） -->
+	<property resource="application.properties" />
+	<!-- 日志文件存放的基础路径(路径最后不需要加/或\) -->
+	<property name="FILE_HOME" value="${application.home}}/logs/" />
+
+	<!-- 控制台输出 -->
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<!-- encoder 默认配置为PatternLayoutEncoder -->
+		<encoder>
+			<pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%level] [%logger{16}:%line] [%thread] [%X{userInfo}] %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<!-- 文件输出 -->
+	<appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${FILE_HOME}/debugs.log</file>
+		<append>true</append>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${FILE_HOME}/debugs.%d{yyyy-MM-dd}.log</fileNamePattern>
+			<maxHistory>15</maxHistory>
+		</rollingPolicy>
+		<encoder>
+			<pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%level] [%logger{16}:%line] [%thread] [%X{userInfo}] %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<!-- http://www.cnblogs.com/tankaixiong/archive/2013/03/08/2949857.html -->
+	<logger name="org.springframework">
+		<level value="INFO" />
+	</logger>
+	
+	<logger name="com.alibaba.druid.pool" >
+		<level value="INFO" />
+	</logger>
+	
+	<logger name="org.directwebremoting" >
+		<level value="INFO" />
+	</logger>
+	<logger name="org.directwebremoting.log.accessLog" >
+		<level value="INFO" />
+	</logger>
+
+	<logger name="o.a.z.ClientCnxn" >
+		<level value="INFO" />
+	</logger>
+
+	<logger name="org.apache.zookeeper" >
+		<level value="INFO" />
+	</logger>
+
+	<logger name="org.mybatis" >
+		<level value="INFO" />
+	</logger>
+	<logger name="mybatis.mapper" >
+		<level value="WARN" />
+	</logger>
+	
+	<logger name="org.quartz" >
+		<level value="WARN" />
+	</logger>
+	
+	
+	<logger name="java.sql.Connection" >
+		<level value="WARN" />
+	</logger>
+	<logger name="java.sql.Statement" >
+		<level value="DEBUG" />
+	</logger>
+	<logger name="java.sql.PreparedStatement" >
+		<level value="DEBUG" />
+	</logger>
+	<logger name="java.sql.ResultSet" >
+		<level value="DEBUG" />
+	</logger>
+	
+	<logger name="log4jdbc.debug">
+		<level value="INFO" />
+	</logger>
+	<logger name="jdbc.audit">
+		<level value="OFF" />
+	</logger>
+	<logger name="jdbc.sqlonly">
+		<level value="OFF" />
+	</logger>
+	<logger name="jdbc.sqltiming">
+		<level value="INFO" />
+	</logger>
+	<logger name="jdbc.resultset">
+		<level value="WARN" />
+	</logger>
+	<logger name="jdbc.connection">
+		<level value="OFF" />
+	</logger>
+	<logger name="jdbc.transcation">
+		<level value="INFO" />
+	</logger>
+	
+	<logger name="org.apache.http">
+		<level value="WARN" />
+	</logger>
+	<logger name="org.apache.commons.httpclient">
+		<level value="INFO" />
+	</logger>
+	<logger name="httpclient.wire">
+		<level value="INFO" />
+	</logger>
+	<logger name="org.apache.commons.beanutils">
+		<level value="WARN" />
+	</logger>
+	
+	<logger name="org.directwebremoting" >
+		<level value="INFO" />
+	</logger>
+	<logger name="org.directwebremoting.log.accessLog" >
+		<level value="INFO" />
+	</logger>
+	<logger name="org.mongodb">
+		<level value="INFO" />
+	</logger>
+	
+	<!-- richinfo日志 -->
+	<logger name="com.example">
+		<level value="DEBUG" />
+		<appender-ref ref="FILE"/>
+	</logger>
+	
+	<root>
+		<appender-ref ref="STDOUT" />
+	</root>
+
+</configuration> 

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.dao.WebpageViewDao">
+    <resultMap id="BaseResultMap" type="com.example.entity.pv.WebpageView">
+        <result column="id" property="id"/>
+        <result column="app_id" property="app_id"/>
+        <result column="app_name" property="app_name"/>
+        <result column="create_date" property="create_date"/>
+        <result column="visit_num" property="visit_num"/>
+        <result column="visit_ip_num" property="visit_ip_num"/>
+        <result column="visit_user_num" property="visit_user_num"/>
+        <result column="visit_jump_percent" property="visit_jump_percent"/>
+        <result column="visit_new_num" property="visit_new_num"/>
+        <result column="visit_session_num" property="visit_session_num"/>
+        <result column="import_date" property="import_date"/>
+
+    </resultMap>
+
+    <insert id="insertWebpageView" parameterType="com.example.entity.pv.WebpageView" >
+       INSERT INTO
+            t_youshu_webpage_view
+            (app_id,create_date,visit_num,visit_ip_num,visit_user_num,import_date)
+        VALUES
+            (#{app_id}, #{create_date}, #{visit_num},#{visit_ip_num},#{visit_ip_num},now())
+    </insert>
+
+
+
+</mapper>

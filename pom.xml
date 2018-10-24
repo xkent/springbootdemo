@@ -11,7 +11,7 @@
 	<modules>
         <module>commons</module>
 		<module>base</module>
-		<module>webapplication</module>
+		<module>application</module>
     </modules>
 
     <packaging>pom</packaging>
